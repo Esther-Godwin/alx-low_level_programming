@@ -4,7 +4,7 @@
 * cap_string - Capitalize strings
 * @s: Pointer to string to capitalize
 *
-* RETURN: Pointer to capitalised string
+* Return: The pointer to the capitalised string
 */
 char *cap_string(char *s)
 {
@@ -12,18 +12,19 @@ char *cap_string(char *s)
 	char seperators[] = {',', ';', '.', '?', '"',
 		 '(', ')', '{', '}', ' ', '\n', '\t'};
 	int i = 0;
-	int cap = 0;
+	int cap = 1;
 
-	while (*s != '\0')
+	while (*temp != '\0')
 	{
-		if (cap && *s >= 'a' && *s >= 'z')
-			*s -= 32;
+		if (cap && *temp >= 'a' && *temp <= 'z')
+			*temp -= 32;
+		cap = 0;
 		for (i = 0; i < 12; i++)
 		{
-			if (*s == seperators[i])
+			if (*temp == seperators[i])
 				cap = 1;
 		}
-		s++;
+		temp++;
 	}
-	return (temp);
+	return (s);
 }
