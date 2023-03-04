@@ -15,11 +15,15 @@ char *_strncpy(char *dest, char *src, int n)
 
 	while (total_bytes <= n)
 	{
-		if (*src == '\0')
-			*temp = '\0';
-		else
+		if (*src != '\0')
+		{
 			*temp = *src;
-		src++;
+			src++;
+		}
+		else
+		{
+			*temp = *src;
+		}
 		total_bytes += sizeof(*src);
 		temp++;
 	}
