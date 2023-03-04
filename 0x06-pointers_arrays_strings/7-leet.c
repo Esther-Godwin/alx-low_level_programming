@@ -13,13 +13,13 @@ char *leet(char *s)
 	int n[] = {4, 3, 0, 7, 1};
 	int i = 0;
 
-	while (*temp)
+	while (*temp != '\0')
 	{
 		for (i = 0; i < 5; i++)
 		{
 			if (*temp == str[i] || *temp == str[i] - 32)
 			{
-				*temp = str[i] + '0';
+				*temp = n[i] + '0';
 			}
 		}
 		temp++;
