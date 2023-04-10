@@ -1,5 +1,5 @@
 /**
- * get-bit - Returns the value of a bit at a given index
+ * get_bit - Returns the value of a bit at a given index
  * @n: Number to get the bit value from
  * @index: Index of the bit to get
  *
