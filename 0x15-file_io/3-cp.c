@@ -60,20 +60,21 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		return (97);
+		exit(97);
 	}
 	src_fd = open(argv[1], O_RDONLY);
 	if (src_fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		return (98);
+		exit(98);
 	}
-	target_fd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	target_fd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR |
+			S_IRGRP | S_IWGRP | S_IROTH);
 	if (target_fd == -1)
 	{
 		_close(src_fd);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		return (99);
+		exit(99);
 	}
 	cp(src_fd, target_fd, argv[2]);
 	_close(src_fd);
